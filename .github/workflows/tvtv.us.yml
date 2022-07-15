@@ -1,5 +1,8 @@
 name: _load
 on:
+  schedule:
+    - cron: '1 * * * *'
+  workflow_dispatch:
   workflow_call:
     inputs:
       site:
