@@ -1,7 +1,7 @@
 name: tvtv.us
 on:
   schedule:
-    - cron: '1 * * * *'
+    - cron: '0/1 * * * *'
   workflow_dispatch:
   workflow_call:
     inputs:
@@ -25,8 +25,13 @@ jobs:
       - run: npm install
       - run: npx epg-grabber npx epg-grabber --config=./tvtv.us.config.js --channels=./tvtv.us_test.channels.xml --output=./test/tvtv.us.guide.xml --days=3 --gzip
 
+      - uses: actions/upload-artifact@v2
+        with:
+         name: tvtv.us_${{ steps.date.outputs.date }}
+         path: .github/workflows/tvtv.us.yml
+
       - uses: JamesIves/github-pages-deploy-action@v4.3.3
-        if: ${{ github.ref == 'refs/heads/master' }}
+        if: ${{ github.ref == 'refs/heads/main' }}
         with:
           branch: gh-pages
           folder: .gh-pages
