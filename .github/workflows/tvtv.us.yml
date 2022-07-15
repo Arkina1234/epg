@@ -30,10 +30,8 @@ jobs:
           node-version: '14'
           cache: 'npm'
       - run: npm install
-      - run: CHANNELS_PATH=sites/${{inputs.site}}/*.channels.xml npm run queue:create -- --max-clusters=1 --days=2
-      - run: NODE_OPTIONS=--insecure-http-parser npm run cluster:load -- --timeout=30000  --cluster-id=1
-      - run: npm run programs:save
-      - run: npm run guides:update
+      - run: npx epg-grabber npx epg-grabber --config=./tvtv.us.config.js --channels=./tvtv.us_test.channels.xml --output=./test/tvtv.us.guide.xml --days=3 --gzip
+
       - uses: tibdex/github-app-token@v1
         if: ${{ !env.ACT }}
         id: create-deploy-token
