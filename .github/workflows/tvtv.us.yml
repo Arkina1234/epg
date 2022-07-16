@@ -41,8 +41,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git rm ./test/*.guide.xml
-          git rm ./test/*.guide.xml.gz
+          git branch -D gh-pages
           git status
           git push
           git commit -m "cron: Updated by Bot" -a
