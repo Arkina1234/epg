@@ -28,23 +28,15 @@ jobs:
           npx epg-grabber --config=./tvtv.us.config.js --channels=./tvtv.us_test.channels.xml --output=./test/tvtv.us.guide.xml --days=3 
           npx epg-grabber --config=./tvtv.us.config.js --channels=./tvtv.us_test.channels.xml --output=./test/tvtv.us.guide.xml.gz --days=3 --gzip
 
-      - name: Check *.M3u8 File existence
-        id: check_files
-        uses: andstor/file-existence-action@v1
-        with:
-          files: "./test/*.guide.xml, ./test/*.guide.xml.gz"
-
-      - uses: actions/checkout@v2
       - name: If *.M3U8 Files exists - Then Cleanup
         if: steps.check_files.outputs.files_exists == 'true'
         # Only runs if all of the files exists
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git branch -D gh-pages
-          git status
-          git push
-          git commit -m "cron: Updated by Bot" -a
+          git checkout gh-pages
+          git branch gh-pages
+          git fetch --all
+          git reset --hard origin/gh-pages
+          git pull origin gh-pages
 
       - name: Commit files
         run: |
