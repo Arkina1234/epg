@@ -18,6 +18,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          ref: gh-pages
+          fetch-depth: 0
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
@@ -28,14 +31,17 @@ jobs:
           npx epg-grabber --config=./tvtv.us.config.js --channels=./tvtv.us_test.channels.xml --output=./test/tvtv.us.guide.xml --days=3 
           npx epg-grabber --config=./tvtv.us.config.js --channels=./tvtv.us_test.channels.xml --output=./test/tvtv.us.guide.xml.gz --days=3 --gzip
 
-      - name: Up-to-date
+      - name: Commit files
         run: |
-          git status
-          git pull
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git commit -m "Add changes" -a
 
-      - uses: ad-m/github-push-action@master
+      - name: Push changes
+        uses: ad-m/github-push-action@master
         with:
-          branch: ${{ github.ref == 'refs/heads/main' }} 
+          force_with_lease: true
+          branch: gh-pages 
           
       - uses: zwaldowski/git-commit-action@v1
         with:
@@ -44,4 +50,4 @@ jobs:
       - name: Push Final Changes
         uses: ad-m/github-push-action@master
         with:
-          branch: ${{ github.ref == 'refs/heads/gh-pages' }}
+          branch: gh-pages
