@@ -34,24 +34,10 @@ jobs:
         with:
           files: "./docs/test/*.xml, ./docs/test/*.gz"
 
-      - name: If *.xml Files exists - Then Add
-        if: steps.check_files.outputs.files_exists == 'true'
-        # Only runs if all of the files exists
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add ./docs/test/*.xml
-          git add ./docs/test/*.xml.gz
-          git status
-          git push          
-          git commit -m "cron: Updated by Bot" -a
-
       - name: If *.xml Files exists - Then Cleanup
-        if: steps.check_files.outputs.files_exists == 'true'
+        if: steps.check_files.outputs.files_exists == 'false'
         # Only runs if all of the files exists
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
           git rm ./docs/test/*.xml
           git rm ./docs/test/*.xml.gz
           git status
@@ -59,6 +45,7 @@ jobs:
           git commit -m "cron: Updated by Bot" -a
 
       - name: Commit files
+        if: steps.check_files.outputs.files_exists == 'true'
         run: |
           git config --local core.autocrlf false
           git config --local user.email "${{ github.actor }}@users.noreply.github.com"
