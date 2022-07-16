@@ -35,7 +35,7 @@ jobs:
           files: "./docs/test/*.xml, ./docs/test/*.gz"
 
       - name: If *.xml Files exists - Then Cleanup
-        if: steps.check_files.outputs.files_exists == 'false'
+        if: steps.check_files.outputs.files_exists == 'true'
         # Only runs if all of the files exists
         run: |
           git rm ./docs/test/*.xml
