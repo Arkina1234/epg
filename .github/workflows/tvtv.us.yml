@@ -38,6 +38,8 @@ jobs:
         if: steps.check_files.outputs.files_exists == 'true'
         # Only runs if all of the files exists
         run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
           git rm ./docs/test/*.xml
           git rm ./docs/test/*.xml.gz
           git status          
