@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site site="tvtv.us">
+  <channels>
+    <channel lang="en" xmltv_id="PublicEducationalGovernmentPEG.us" site_id="22568">Public, Educational, Government PEG</channel>
+    <channel lang="en" xmltv_id="CommunityAccessCOAC.us" site_id="20055">Community Access - COAC</channel>
+    <channel lang="en" xmltv_id="GovernmentAccess.us" site_id="106288">Government Access</channel>
+    <channel lang="en" xmltv_id="Infomercial.us" site_id="92975">Infomercial</channel>
+    <channel lang="en" xmltv_id="InformationChannelINFO.us" site_id="22579">Information Channel - INFO</channel>
+    <channel lang="en" xmltv_id="LocalAccess.us" site_id="20079">Local Access</channel>
+    <channel lang="en" xmltv_id="LocalNews.us" site_id="22580">Local News</channel>
+    <channel lang="en" xmltv_id="LocalOriginationLOOR.us" site_id="14786">Local Origination - LOOR</channel>
+    <channel lang="en" xmltv_id="LocalRadioStation.us" site_id="93121">Local Radio Station</channel>
+    <channel lang="en" xmltv_id="LocalWeatherChannel.us" site_id="18713">Local Weather Channel</channel>
+    <channel lang="en" xmltv_id="PaidPrograms.us" site_id="">Paid Programs</channel>
+  </channels>
+</site>

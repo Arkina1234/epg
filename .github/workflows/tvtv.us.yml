@@ -1,0 +1,65 @@
+name: tvtv.us
+on:
+  schedule:
+    - cron: '0/1 * * * *'
+  workflow_dispatch:
+  workflow_call:
+    inputs:
+      site:
+        required: true
+        type: string
+    secrets:
+      APP_ID:
+        required: true
+      APP_PRIVATE_KEY:
+        required: true
+jobs:
+  load:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          cache: 'npm'
+      - run: npm install
+      - name: Run npx epg-grabber
+        run: |
+          npx epg-grabber --config=./tvtv.us.config.js --channels=./tvtv.us_test.channels.xml --output=./test/tvtv.us.guide.xml --days=3 
+          npx epg-grabber --config=./tvtv.us.config.js --channels=./tvtv.us_test.channels.xml --output=./test/tvtv.us.guide.xml.gz --days=3 --gzip
+
+      - name: Commit files
+        run: |
+          git config --local core.autocrlf false
+          git config --local user.email "${{ github.actor }}@users.noreply.github.com"
+          git config --local user.name "${{ github.actor }}"
+          git add . && git add --renormalize .
+          git pull origin gh-pages --autostash --rebase -X ours
+          git commit --allow-empty -am "${{ github.workflow }}"
+          NO_PAGER=1 git --no-pager diff HEAD^
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          branch: gh-pages
+
+      - name: Re-pull on failure
+        if: ${{ failure() }}
+        run: git pull origin gh-pages --autostash --rebase -X ours
+
+      - name: Re-push on failure
+        if: ${{ failure() }}
+        uses: ad-m/github-push-action@master
+        with:
+          branch: gh-pages
+          force: true
+          
+      - uses: zwaldowski/git-commit-action@v1
+        with:
+          working_directory: .
+
+      - name: Push Final Changes
+        uses: ad-m/github-push-action@master
+        with:
+          branch: gh-pages
+          force: true 
