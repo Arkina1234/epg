@@ -24,8 +24,7 @@ jobs:
           cache: 'npm'
       - run: npm install
       - name: npx epg-grabber
-        run: npx epg-grabber --config=./tvtv.us.config.js --channels=./tvtv.us_test.channels.xml --output=./test/tvtv.us.guide.xml --days=3
-        run: npx epg-grabber --config=./tvtv.us.config.js --channels=./tvtv.us_test.channels.xml --output=./test/tvtv.us.guide.xml.gz --days=3 --gzip
+        run: npx epg-grabber --config=./tvtv.us.config.js --channels=./tvtv.us_test.channels.xml --output=./test/tvtv.us.guide.xml --days=3 && npx epg-grabber --config=./tvtv.us.config.js --channels=./tvtv.us_test.channels.xml --output=./test/tvtv.us.guide.xml.gz --days=3 --gzip
 
       - uses: ad-m/github-push-action@master
         with:
