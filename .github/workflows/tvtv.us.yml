@@ -53,10 +53,6 @@ jobs:
         with:
           branch: gh-pages
           force: true
-          
-      - uses: zwaldowski/git-commit-action@v1
-        with:
-          working_directory: .
 
       - name: Push Final Changes
         uses: ad-m/github-push-action@master
