@@ -25,15 +25,15 @@ jobs:
       - run: npm install
       - run: npx epg-grabber npx epg-grabber --config=./tvtv.us.config.js --channels=./tvtv.us_test.channels.xml --output=./test/tvtv.us.guide.xml --days=3 --gzip
 
-      - uses: actions/upload-artifact@v2
+      - uses: ad-m/github-push-action@master
         with:
-         name: tvtv.us_${{ steps.date.outputs.date }}
-         path: .github/workflows/tvtv.us.yml
+          branch: ${{ github.ref == 'refs/heads/main' }} 
+          
+      - uses: zwaldowski/git-commit-action@v1
+        with:
+          working_directory: .
 
-      - uses: JamesIves/github-pages-deploy-action@v4.3.3
-        if: ${{ github.ref == 'refs/heads/main' }}
+      - name: Push Final Changes
+        uses: ad-m/github-push-action@master
         with:
-          branch: gh-pages
-          folder: .gh-pages
-          clean: false
-          force: false
+          branch: ${{ github.ref == 'refs/heads/gh-pages' }}
