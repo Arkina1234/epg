@@ -32,7 +32,7 @@ jobs:
         id: check_files
         uses: andstor/file-existence-action@v1
         with:
-          files: "./docs/test/*.guide.xml, ./docs/test/*.guide.xml.gz"
+          files: "./docs/test/*.xml, ./docs/test/*.gz"
 
       - name: If *.xml Files exists - Then Cleanup
         if: steps.check_files.outputs.files_exists == 'true'
@@ -40,8 +40,8 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git rm ./docs/test/*.guide.xml
-          git rm ./docs/test/*.guide.xml.gz
+          rm ./docs/test/*.xml
+          rm ./docs/test/*.xml.gz
           git status
           git push          
           git commit -m "cron: Updated by Bot" -a
