@@ -41,12 +41,10 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git switch gh-pages
           git rm ./test/*.guide.xml
           git rm ./test/*.guide.xml.gz
           git status
           git push
-          git switch main    
           git commit -m "cron: Updated by Bot" -a
 
       - name: Commit files
