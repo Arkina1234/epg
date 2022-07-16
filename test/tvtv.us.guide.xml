@@ -223,6 +223,7 @@
 <programme start="20220716210000 +0000" stop="20220716220000 +0000" channel="LocalWeatherChannel.us"><title lang="en">Local Weather</title><category lang="en">Weather</category><icon src="https://tvtv.us/gn/i/assets/p782199_st_v8_aa.jpg?w=240&amp;h=360"/></programme>
 <programme start="20220716220000 +0000" stop="20220716230000 +0000" channel="LocalWeatherChannel.us"><title lang="en">Local Weather</title><category lang="en">Weather</category><icon src="https://tvtv.us/gn/i/assets/p782199_st_v8_aa.jpg?w=240&amp;h=360"/></programme>
 <programme start="20220716230000 +0000" stop="20220717000000 +0000" channel="LocalWeatherChannel.us"><title lang="en">Local Weather</title><category lang="en">Weather</category><icon src="https://tvtv.us/gn/i/assets/p782199_st_v8_aa.jpg?w=240&amp;h=360"/></programme>
+<<<<<<< Updated upstream
 <programme start="20220717000000 +0000" stop="20220717010000 +0000" channel="LocalWeatherChannel.us"><title lang="en">Local Weather</title><category lang="en">Weather</category><icon src="https://tvtv.us/gn/i/assets/p782199_st_v8_aa.jpg?w=240&amp;h=360"/></programme>
 <programme start="20220717010000 +0000" stop="20220717020000 +0000" channel="LocalWeatherChannel.us"><title lang="en">Local Weather</title><category lang="en">Weather</category><icon src="https://tvtv.us/gn/i/assets/p782199_st_v8_aa.jpg?w=240&amp;h=360"/></programme>
 <programme start="20220717020000 +0000" stop="20220717030000 +0000" channel="LocalWeatherChannel.us"><title lang="en">Local Weather</title><category lang="en">Weather</category><icon src="https://tvtv.us/gn/i/assets/p782199_st_v8_aa.jpg?w=240&amp;h=360"/></programme>
@@ -246,6 +247,8 @@
 <programme start="20220717210000 +0000" stop="20220717220000 +0000" channel="LocalWeatherChannel.us"><title lang="en">Local Weather</title><category lang="en">Weather</category><icon src="https://tvtv.us/gn/i/assets/p782199_st_v8_aa.jpg?w=240&amp;h=360"/></programme>
 <programme start="20220717220000 +0000" stop="20220717230000 +0000" channel="LocalWeatherChannel.us"><title lang="en">Local Weather</title><category lang="en">Weather</category><icon src="https://tvtv.us/gn/i/assets/p782199_st_v8_aa.jpg?w=240&amp;h=360"/></programme>
 <programme start="20220717230000 +0000" stop="20220718000000 +0000" channel="LocalWeatherChannel.us"><title lang="en">Local Weather</title><category lang="en">Weather</category><icon src="https://tvtv.us/gn/i/assets/p782199_st_v8_aa.jpg?w=240&amp;h=360"/></programme>
+=======
+>>>>>>> Stashed changes
 <programme start="20220718000000 +0000" stop="20220718010000 +0000" channel="LocalWeatherChannel.us"><title lang="en">Local Weather</title><category lang="en">Weather</category><icon src="https://tvtv.us/gn/i/assets/p782199_st_v8_aa.jpg?w=240&amp;h=360"/></programme>
 <programme start="20220718010000 +0000" stop="20220718020000 +0000" channel="LocalWeatherChannel.us"><title lang="en">Local Weather</title><category lang="en">Weather</category><icon src="https://tvtv.us/gn/i/assets/p782199_st_v8_aa.jpg?w=240&amp;h=360"/></programme>
 <programme start="20220718020000 +0000" stop="20220718030000 +0000" channel="LocalWeatherChannel.us"><title lang="en">Local Weather</title><category lang="en">Weather</category><icon src="https://tvtv.us/gn/i/assets/p782199_st_v8_aa.jpg?w=240&amp;h=360"/></programme>
