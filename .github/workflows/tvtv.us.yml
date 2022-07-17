@@ -40,8 +40,8 @@ jobs:
           git config --local core.autocrlf false
           git config --local user.email "${{ github.actor }}@users.noreply.github.com"
           git config --local user.name "${{ github.actor }}"
-          git rm ./docs/test/*.xml
-          git rm ./docs/test/*.xml.gz
+          git rm ~./docs/test/*.xml
+          git rm ~./docs/test/*.gz
           git add . && git add --renormalize .
           git pull origin ${{ github.ref }} --autostash --rebase -X ours
           git commit --allow-empty -am "${{ github.workflow }}"
