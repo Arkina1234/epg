@@ -34,25 +34,14 @@ jobs:
         with:
           files: "./docs/test/*.xml, ./docs/test/*.gz"
 
-      - name: If *.xml Files exists - Then Cleanup
-        if: steps.check_files.outputs.files_exists == 'true'
-        # Only runs if all of the files exists
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git rm ./docs/test/*.xml
-          git rm ./docs/test/*.xml.gz
-          git status          
-          git pull origin ${{ github.ref }}    
-          git push origin ${{ github.ref }}      
-          git commit -m "cron: Updated by Bot" -a
-
       - name: Commit files
         if: steps.check_files.outputs.files_exists == 'true'
         run: |
           git config --local core.autocrlf false
           git config --local user.email "${{ github.actor }}@users.noreply.github.com"
           git config --local user.name "${{ github.actor }}"
+          git rm ./docs/test/*.xml
+          git rm ./docs/test/*.xml.gz
           git add . && git add --renormalize .
           git pull origin ${{ github.ref }} --autostash --rebase -X ours
           git commit --allow-empty -am "${{ github.workflow }}"
