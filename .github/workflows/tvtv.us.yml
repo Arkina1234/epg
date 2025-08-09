@@ -1,0 +1,30 @@
+name: tvtv.us
+on:
+  schedule:
+    - cron: "0 5 * * *"
+  push:
+    branches:
+      - master
+    paths:
+      - '.github/workflows/tvtv.us.yml'
+      - 'channels/tvtv.us.channels.xml'
+  workflow_dispatch:
+jobs:
+  load:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v2
+        if: ${{ !env.ACT }}
+        with:
+          node-version: '18'
+      - run: npm install
+      - run: npm run grab -- --channels=./channels/tvtv.us.channels.xml --gzip --output=./guide/tvtv.us.xml
+      - uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: .
+          git-config-name: github-actions[bot]
+          git-config-email: github-actions[bot]@users.noreply.github.com
+          commit-message: 'Update EPG'
+          clean: false
+          force: false
