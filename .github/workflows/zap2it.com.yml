@@ -6,8 +6,8 @@ on:
     branches:
       - master
     paths:
-      - '.github/workflows/tvtv.us.yml'
-      - 'channels/tvtv.us.channels.xml'
+      - '.github/workflows/zap2it.com.yml'
+      - 'channels/zap2it.com.channels.xml'
   workflow_dispatch:
 jobs:
   load:
