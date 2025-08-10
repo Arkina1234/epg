@@ -1,4 +1,4 @@
-name: tvtv.us
+guidetputtputtput: tvtv.us
 on:
   schedule:
     - cron: "0 5 * * *"
@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: '24'
       - run: npm install
-      - run: npm run grab -- --channels=./channels/tvtv.us.channels.xml --gzip --output=./guide/tvtv.us.xml --maxConnections=1000
+      - run: npm run grab -- --channels=./channels/tvtv.us.channels.xml --output=./guide/tvtv.us.xml --maxConnections=1000
       - uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: .
