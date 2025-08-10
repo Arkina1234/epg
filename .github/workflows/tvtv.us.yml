@@ -14,12 +14,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v4
         if: ${{ !env.ACT }}
         with:
-          node-version: '18'
+          node-version: '24'
       - run: npm install
-      - run: npm run grab -- --channels=./channels/tvtv.us.channels.xml --gzip --output=./guide/tvtv.us.xml
+      - run: npm run grab -- --channels=./channels/tvtv.us.channels.xml --gzip --output=./guide/tvtv.us.xml --maxConnections=1000
       - uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: .
