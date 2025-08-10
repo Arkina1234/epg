@@ -1,4 +1,4 @@
-guidetputtputtput: tvtv.us
+name: tvtv.us
 on:
   schedule:
     - cron: "0 5 * * *"
