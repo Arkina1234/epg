@@ -1,0 +1,30 @@
+name: tvpassport.com
+on:
+  schedule:
+    - cron: "0 5 * * *"
+  push:
+    branches:
+      - master
+    paths:
+      - '.github/workflows/tvpassport.com.yml'
+      - 'channels/tvpassport.com.channels.xml'
+  workflow_dispatch:
+jobs:
+  load:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v4
+        if: ${{ !env.ACT }}
+        with:
+          node-version: '18'
+      - run: npm install
+      - run: npm run grab -- --channels=./channels/tvpassport.com.channels.xml --gzip --output=./guide/tvpassport.com.xml
+      - uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: .
+          git-config-name: github-actions[bot]
+          git-config-email: github-actions[bot]@users.noreply.github.com
+          commit-message: 'Update EPG'
+          clean: false
+          force: false
